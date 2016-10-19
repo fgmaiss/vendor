@@ -5,6 +5,10 @@ namespace FGMGeneric;
  * Class APCnpjAndre
  * @package FGMGeneric
  */
+/**
+ * Class APCnpjAndre
+ * @package FGMGeneric
+ */
 class APCnpjAndre
 {
     /**
@@ -53,7 +57,8 @@ class APCnpjAndre
      * @param $var string
      * @return string
      */
-    public static function Maskcnpj($var) {
+    public static function Maskcnpj($var)
+    {
         // ---var = string a ser tratada
 
         $var = \FGMGeneric\APFilter::Number($var);
@@ -63,5 +68,10 @@ class APCnpjAndre
             $var = substr($var, 0, 2) . '.' . substr($var, 2, 3) . '.' . substr($var, 5, 3) . '/' . substr($var, 8, 4) . '-' . substr($var, 12, 2);
         }
         return ($var);
+    }
+
+    public static function TestaAndre($v)
+    {
+        return($v);
     }
 }
