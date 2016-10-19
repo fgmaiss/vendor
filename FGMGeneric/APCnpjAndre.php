@@ -59,8 +59,6 @@ class APCnpjAndre
      */
     public static function Maskcnpj($var)
     {
-        // ---var = string a ser tratada
-
         $var = \FGMGeneric\APFilter::Number($var);
         if (strlen(trim($var)) == 11) {
             $var = substr($var, 0, 3) . '.' . substr($var, 3, 3) . '.' . substr($var, 6, 3) . '-' . substr($var, 9, 2);
@@ -70,6 +68,11 @@ class APCnpjAndre
         return ($var);
     }
 
+    /**
+     * mais um teste
+     * @param $v
+     * @return mixed
+     */
     public static function TestaAndre($v)
     {
         return($v);
