@@ -4,22 +4,26 @@ date_default_timezone_set('America/Sao_Paulo');
 function __autoload($className)
 {
     $className = ltrim($className, '\\');
-    $fileName  = '';
+    $fileName = '';
     if ($lastNsPos = strrpos($className, '\\')) {
         $namespace = substr($className, 0, $lastNsPos);
         $className = substr($className, $lastNsPos + 1);
-        $fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
+        $fileName = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
     }
     $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
 
-    $fileName = 'vendor'.DIRECTORY_SEPARATOR.$fileName;
-
-    require $fileName;
+    if (file_exists(__DIR__ . DIRECTORY_SEPARATOR .'vendor' . DIRECTORY_SEPARATOR . $fileName)) {
+        require __DIR__ . DIRECTORY_SEPARATOR .'vendor' . DIRECTORY_SEPARATOR . $fileName;
+    } elseif (file_exists(__DIR__ . DIRECTORY_SEPARATOR .'src' . DIRECTORY_SEPARATOR . $fileName)) {
+        require __DIR__ . DIRECTORY_SEPARATOR .'src' . DIRECTORY_SEPARATOR . $fileName;
+    } else {
+        die("Classe: [{$fileName}] não encontrada!");
+    }
 }
 
 session_start();
 
-if(\FGMGeneric\APInstance::Development($_SERVER['HTTP_HOST'])) {
+if (FGMGeneric\APInstance::Development($_SERVER['HTTP_HOST'])) {
     error_reporting(E_ALL);
     ini_set('display_errors', true);
     ini_set('html_errors', true);
