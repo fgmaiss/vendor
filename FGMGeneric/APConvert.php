@@ -2,12 +2,13 @@
 namespace FGMGeneric;
 
 /**
+ * Classe de conversão de dados do tipo string
  * Class APConvert
  */
 class APConvert
 {
     /**
-     * @param $s
+     * @param $s string
      * @return string
      */
     public static function Capital($s)
@@ -21,16 +22,21 @@ class APConvert
 
             if ($v != 'dos' && $v != 'com' && $v != 'por' && $v != 'pelo' && $v != 'pelos' && $v != 'pela' && $v != 'pelas' && $v != 'para' && $v != 'de' && $v != 'do' && $v != 'da' && $v != 'dos' && $v != 'das' && $v != 'no' && $v != 'na' && $v != 'nos' && $v != 'nas' && $v != 'a' && $v != 'ao' && $v != 'ou' && $v != 'o' && $v != 'as' && $v != 'os' && $v != 'e') {
                 $var[$k] = ucfirst($v);
-                if (substr($var[$k], 0, 1) == 'á')
+                if (substr($var[$k], 0, 1) == 'á') {
                     $var[$k] = 'Á' . substr($var[$k], 1);
-                if (substr($var[$k], 0, 1) == 'é')
+                }
+                if (substr($var[$k], 0, 1) == 'é') {
                     $var[$k] = 'É' . substr($var[$k], 1);
-                if (substr($var[$k], 0, 1) == 'í')
+                }
+                if (substr($var[$k], 0, 1) == 'í') {
                     $var[$k] = 'Í' . substr($var[$k], 1);
-                if (substr($var[$k], 0, 1) == 'ó')
+                }
+                if (substr($var[$k], 0, 1) == 'ó') {
                     $var[$k] = 'Ó' . substr($var[$k], 1);
-                if (substr($var[$k], 0, 1) == 'ú')
+                }
+                if (substr($var[$k], 0, 1) == 'ú') {
                     $var[$k] = 'Ú' . substr($var[$k], 1);
+                }
             } else {
                 if ($v != 'vaf' && $v != 'icms' && $v != 'iptu' && $v != 'itbi' && $v != 'cfop' && $v != 'cep' && $v != 'cnae' && $v != 'gia' && $v != 'issqn') {
                     $var[$k] = $v;
@@ -47,35 +53,7 @@ class APConvert
     }
 
     /**
-     * @param $s
-     * @return mixed
-     */
-    public static function Upper($s)
-    {
-        $s = strtoupper($s);
-        $s = str_replace('ç', 'Ç', $s);
-        $s = str_replace('á', 'Á', $s);
-        $s = str_replace('à', 'À', $s);
-        $s = str_replace('â', 'Â', $s);
-        $s = str_replace('ã', 'Ã', $s);
-        $s = str_replace('é', 'É', $s);
-        $s = str_replace('è', 'È', $s);
-        $s = str_replace('ê', 'Ê', $s);
-        $s = str_replace('ó', 'Ó', $s);
-        $s = str_replace('ò', 'Ò', $s);
-        $s = str_replace('ô', 'Ô', $s);
-        $s = str_replace('õ', 'Õ', $s);
-        $s = str_replace('ú', 'Ú', $s);
-        $s = str_replace('ù', 'Ù', $s);
-        $s = str_replace('û', 'Û', $s);
-        $s = str_replace('í', 'Í', $s);
-        $s = str_replace('ì', 'I', $s);
-        $s = str_replace('"', '`', $s);
-        return ($s);
-    }
-
-    /**
-     * @param $s
+     * @param $s string
      * @return mixed
      */
     public static function Lower($s)
@@ -103,7 +81,35 @@ class APConvert
     }
 
     /**
-     * @param $s
+     * @param $s string
+     * @return mixed
+     */
+    public static function Upper($s)
+    {
+        $s = strtoupper($s);
+        $s = str_replace('ç', 'Ç', $s);
+        $s = str_replace('á', 'Á', $s);
+        $s = str_replace('à', 'À', $s);
+        $s = str_replace('â', 'Â', $s);
+        $s = str_replace('ã', 'Ã', $s);
+        $s = str_replace('é', 'É', $s);
+        $s = str_replace('è', 'È', $s);
+        $s = str_replace('ê', 'Ê', $s);
+        $s = str_replace('ó', 'Ó', $s);
+        $s = str_replace('ò', 'Ò', $s);
+        $s = str_replace('ô', 'Ô', $s);
+        $s = str_replace('õ', 'Õ', $s);
+        $s = str_replace('ú', 'Ú', $s);
+        $s = str_replace('ù', 'Ù', $s);
+        $s = str_replace('û', 'Û', $s);
+        $s = str_replace('í', 'Í', $s);
+        $s = str_replace('ì', 'I', $s);
+        $s = str_replace('"', '`', $s);
+        return ($s);
+    }
+
+    /**
+     * @param $s string
      * @return mixed
      */
     public static function NoQuotes($s)
@@ -118,7 +124,7 @@ class APConvert
     }
 
     /**
-     * @param $valor
+     * @param $valor string
      * @return string
      */
     public static function Extense($valor)
@@ -126,28 +132,90 @@ class APConvert
         if ($valor == 0) {
             return ("zero");
         } else {
-            $singular = array("centavo","real","mil","milhão","bilhão","trilhão","quatrilhão");
-            $plural = array("centavos","reais","mil","milhões","bilhões","trilhões","quatrilhões");
+            $singular = array(
+                "centavo",
+                "real",
+                "mil",
+                "milhão",
+                "bilhão",
+                "trilhão",
+                "quatrilhão"
+            );
+            $plural = array(
+                "centavos",
+                "reais",
+                "mil",
+                "milhões",
+                "bilhões",
+                "trilhões",
+                "quatrilhões"
+            );
 
-            $c = array("","cem","duzentos","trezentos","quatrocentos","quinhentos","seiscentos","setecentos","oitocentos","novecentos");
-            $d = array("","dez","vinte","trinta","quarenta","cinquenta","sessenta","setenta","oitenta","noventa");
-            $d10 = array("dez","onze","doze","treze","quatorze","quinze","dezesseis","dezessete","dezoito","dezenove");
-            $u = array("","um","dois","três","quatro","cinco","seis","sete","oito","nove");
+            $c = array(
+                "",
+                "cem",
+                "duzentos",
+                "trezentos",
+                "quatrocentos",
+                "quinhentos",
+                "seiscentos",
+                "setecentos",
+                "oitocentos",
+                "novecentos"
+            );
+            $d = array(
+                "",
+                "dez",
+                "vinte",
+                "trinta",
+                "quarenta",
+                "cinquenta",
+                "sessenta",
+                "setenta",
+                "oitenta",
+                "noventa"
+            );
+            $d10 = array(
+                "dez",
+                "onze",
+                "doze",
+                "treze",
+                "quatorze",
+                "quinze",
+                "dezesseis",
+                "dezessete",
+                "dezoito",
+                "dezenove"
+            );
+            $u = array(
+                "",
+                "um",
+                "dois",
+                "três",
+                "quatro",
+                "cinco",
+                "seis",
+                "sete",
+                "oito",
+                "nove"
+            );
 
             $z = 0;
             $rt = "";
 
-            $valor = (double) $valor;
+            $valor = (double)$valor;
 
             $valor = number_format($valor, 2, ".", ".");
             $inteiro = explode(".", $valor);
-            for ($i = 0; $i < count($inteiro); $i ++)
-                for ($ii = strlen($inteiro[$i]); $ii < 3; $ii ++)
+            for ($i = 0; $i < count($inteiro); $i++) {
+                for ($ii = strlen($inteiro[$i]); $ii < 3; $ii++) {
                     $inteiro[$i] = "0" . $inteiro[$i];
+                }
+            }
 
             // $fim identifica onde que deve se dar junção de centenas por "e" ou por "," ;)
             $fim = count($inteiro) - ($inteiro[count($inteiro) - 1] > 0 ? 1 : 2);
-            for ($i = 0; $i < count($inteiro); $i ++) {
+            for ($i = 0; $i < count($inteiro); $i++) {
                 $valor = $inteiro[$i];
                 $rc = (($valor > 100) && ($valor < 200)) ? "cento" : $c[$valor[0]];
                 $rd = ($valor[1] < 2) ? "" : $d[$valor[1]];
@@ -156,14 +224,17 @@ class APConvert
                 $r = $rc . (($rc && ($rd || $ru)) ? " e " : "") . $rd . (($rd && $ru) ? " e " : "") . $ru;
                 $t = count($inteiro) - 1 - $i;
                 $r .= $r ? " " . ($valor > 1 ? $plural[$t] : $singular[$t]) : "";
-                if ($valor == "000")
-                    $z ++;
-                elseif ($z > 0)
-                    $z --;
-                if (($t == 1) && ($z > 0) && ($inteiro[0] > 0))
+                if ($valor == "000") {
+                    $z++;
+                } elseif ($z > 0) {
+                    $z--;
+                }
+                if (($t == 1) && ($z > 0) && ($inteiro[0] > 0)) {
                     $r .= (($z > 1) ? " de " : "") . $plural[$t];
-                if ($r)
+                }
+                if ($r) {
                     $rt = $rt . ((($i > 0) && ($i <= $fim) && ($inteiro[0] > 0) && ($z < 1)) ? (($i < $fim) ? ", " : " e ") : " ") . $r;
+                }
             }
             return ($rt);
         }
