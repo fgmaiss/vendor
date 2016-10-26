@@ -5,6 +5,10 @@ namespace FGMGeneric;
  * Classe de conversão de dados do tipo string
  * Class APConvert
  */
+/**
+ * Class APConvert
+ * @package FGMGeneric
+ */
 class APConvert
 {
     /**
@@ -240,4 +244,17 @@ class APConvert
         }
     }
 
+    /**
+     * @param string $var
+     * @param int $len
+     * @param string $opc
+     * @return string
+     */
+    public static function Zeroesq($var = '', $len = 0, $opc = '0') {
+        $var = trim($var);
+        for($i = 0; strlen($var) < $len; $i ++) {
+            $var = $opc.$var;
+        }
+        return ($var);
+    }
 }
