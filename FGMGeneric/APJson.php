@@ -16,7 +16,7 @@ class APJson
      * @param string $method
      * @param array $array
      */
-    public static function __construct($link, $method, $array)
+    public static function Send($link, $method, $array)
     {
         $method = APConvert::Upper($method);
 

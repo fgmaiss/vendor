@@ -2,10 +2,6 @@
 namespace FGMGeneric;
 
 /**
- * Classe de conversão de dados do tipo string
- * Class APConvert
- */
-/**
  * Class APConvert
  * @package FGMGeneric
  */
@@ -250,11 +246,26 @@ class APConvert
      * @param string $opc
      * @return string
      */
-    public static function Zeroesq($var = '', $len = 0, $opc = '0') {
+    public static function Zeroesq($var = '', $len = 0, $opc = '0')
+    {
         $var = trim($var);
-        for($i = 0; strlen($var) < $len; $i ++) {
-            $var = $opc.$var;
+        for ($i = 0; strlen($var) < $len; $i++) {
+            $var = $opc . $var;
         }
         return ($var);
+    }
+
+    /**
+     * @param array $array
+     * @return array
+     */
+    public static function ArrayToUTF8(array $array)
+    {
+        foreach ($array AS $k => $v) {
+            if (is_string($v)) {
+                $array[$k] = utf8_encode($v);
+            }
+        };
+        return $array;
     }
 }
